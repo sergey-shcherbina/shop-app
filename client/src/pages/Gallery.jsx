@@ -4,6 +4,7 @@ import {Context} from ".."
 import {observer} from "mobx-react-lite"
 import {fetchPhotos,removePhoto} from "../http/flowerAPI"
 import FullScreen from "../components/modals/FullScreen"
+import {baseURL} from "../http"
 
 const Gallery = observer(() => {
   const {store} = useContext(Context)
@@ -18,7 +19,8 @@ const Gallery = observer(() => {
           store.setSelectedPhoto(photo)
           store.user.role !== "ADMIN" && setScreenVisible(true)
         }}
-        src={process.env.REACT_APP_API_URL + photo.img}  
+        // src={process.env.REACT_APP_API_URL + photo.img}
+        src={baseURL + photo.img}  
         style={{cursor: "pointer",width: "70vw" ,height: "50vw"}}
       />
       Описание

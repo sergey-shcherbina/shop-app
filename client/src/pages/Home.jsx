@@ -4,6 +4,7 @@ import {observer} from "mobx-react-lite"
 import {fetchGroups} from "../http/flowerAPI"
 import {Context} from ".."
 import {useNavigate} from "react-router-dom"
+import {baseURL} from "../http"
 
 const Home = observer(() => {
   const {store} = useContext(Context)
@@ -21,7 +22,8 @@ const Home = observer(() => {
           className="d-flex flex-column align-items-center"
         >
         <Image
-          src={process.env.REACT_APP_API_URL + group.img}
+          // src={process.env.REACT_APP_API_URL + group.img}
+          src={baseURL + group.img}
           style={{cursor: "pointer", width: "65vw", border: "solid white"}}
           onClick={() => {
             store.setSelectedGroup(group)

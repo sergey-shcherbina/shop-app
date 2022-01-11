@@ -7,6 +7,7 @@ import AddImage from "../components/modals/AddImage"
 import FullScreen from "../components/modals/FullScreen"
 import {fetchFlowers, fetchImages, removeImage} from "../http/flowerAPI"
 import {useNavigate} from "react-router-dom"
+import {baseURL} from "../http"
 
 const FlowerPage = observer(() => {
   const {store} = useContext(Context)
@@ -26,7 +27,8 @@ const FlowerPage = observer(() => {
     <div  key={image.id}>
       <Image   
         onClick={() => store.setSelectedImage(image)}
-        src={process.env.REACT_APP_API_URL + image.img}  
+        // src={process.env.REACT_APP_API_URL + image.img} 
+        src={baseURL + image.img} 
         style={{cursor: "pointer", marginLeft: 3, width: "13vw", height: "8vw"}}
       />
     </div>  

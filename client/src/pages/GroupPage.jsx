@@ -4,6 +4,7 @@ import {Context} from ".."
 import {ListGroup, Image, Container} from "react-bootstrap"
 import {useNavigate} from "react-router-dom"
 import {fetchFlowers} from "../http/flowerAPI"
+import {baseURL} from "../http"
 
 const GroupPage = observer(() => {
   const {store} = useContext(Context)
@@ -36,7 +37,8 @@ const GroupPage = observer(() => {
               }}
             >
               <h5>{flower.name}</h5>
-              <Image src={process.env.REACT_APP_API_URL + "1" + flower.id + ".jpg"} style={{width: "60vw", height: "38.5vw"}}/>
+              {/* <Image src={process.env.REACT_APP_API_URL + "1" + flower.id + ".jpg"} style={{width: "60vw", height: "38.5vw"}}/> */}
+              <Image src={baseURL + "1" + flower.id + ".jpg"} style={{width: "60vw", height: "38.5vw"}}/>
             </ListGroup.Item > 
           )}
         </ListGroup>
