@@ -51,7 +51,8 @@ const FlowerPage = observer(() => {
         className="d-flex justify-content-center align-items-center"
         style={{cursor: "pointer"}}
       >
-        <Image src={process.env.REACT_APP_API_URL + (store.selectedImage.img ||
+        {/* <Image src={process.env.REACT_APP_API_URL + (store.selectedImage.img || */}
+          <Image src={baseURL + (store.selectedImage.img ||
           "1" + store.selectedFlower.id + ".jpg")} 
           style={{width: "60vw", height: "32vw"}}
           onClick={() => setScreenVisible(true)}
