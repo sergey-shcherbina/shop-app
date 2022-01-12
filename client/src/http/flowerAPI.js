@@ -1,7 +1,7 @@
 import {$authHost, $host} from "."
 
 export const createGroup = async (group) => {
-  const {data} = await $authHost.post("api//group", group)
+  const {data} = await $authHost.post("api/group", group)
   return data
 }
 export const fetchGroups = async () => {
