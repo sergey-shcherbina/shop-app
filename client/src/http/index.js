@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "/"
+const baseURL = "/api/"
   // process.env.NODE_ENV === "production"
   //   ? "/"
   // //   // : "/"

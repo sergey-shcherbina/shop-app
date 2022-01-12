@@ -13,14 +13,14 @@ app.use(express.json())
 app.use(express.static(path.resolve(__dirname, "static")))
 app.use(fileUpload({})) 
 
-app.use("api/user", require("./routes/userRouter"))
-app.use("api/group", require("./routes/groupRouter"))
-app.use("api/flower", require("./routes/flowerRouter"))
-app.use("api/review", require("./routes/reviewRouter"))
-app.use("api/basket_flower", require("./routes/basketFlowerRouter"))
-app.use("api/image", require("./routes/imgageRouter"))
-app.use("api/photo", require("./routes/photoRouter"))
-app.use("api/rating", require("./routes/ratingRouter"))
+app.use("/user", require("./routes/userRouter"))
+app.use("/group", require("./routes/groupRouter"))
+app.use("/flower", require("./routes/flowerRouter"))
+app.use("/review", require("./routes/reviewRouter"))
+app.use("/basket_flower", require("./routes/basketFlowerRouter"))
+app.use("/image", require("./routes/imgageRouter"))
+app.use("/photo", require("./routes/photoRouter"))
+app.use("/rating", require("./routes/ratingRouter"))
 
 const start = async () => {
   try {
