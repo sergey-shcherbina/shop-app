@@ -6,7 +6,7 @@ const cors = require("cors")
 const fileUpload = require("express-fileupload")
 const path = require("path")
 
-const PORT = process.env.PORT || 3003
+const PORT = process.env.PORT || 3004
 const app = express()
 app.use(cors())
 app.use(express.json())
