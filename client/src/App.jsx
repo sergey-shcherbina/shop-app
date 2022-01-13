@@ -10,7 +10,7 @@ const App = () => {
   return (
     <div 
       // style={{background:`url(${process.env.REACT_APP_API_URL + (store.backgr.img || "1000.jpg")}) no-repeat`,
-      style={{background:`url(${baseURL + (store.backgr.img || "1000.jpg")}) no-repeat`, 
+      style={{background:`url(${baseURL + "api/" + (store.backgr.img || "1000.jpg")}) no-repeat`, 
       backgroundSize: "cover", width: "100vw", height: "100vh"}}
     >
       <BrowserRouter>

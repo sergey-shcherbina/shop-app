@@ -13,7 +13,7 @@ const FullScreen = ({show, onHide, im}) => {
       >
         <CloseButton variant="white"></CloseButton>
       </div>
-      <Image src={baseURL + im} style={{width: "100vw"}} />
+      <Image src={baseURL + "api/" + im} style={{width: "100vw"}} />
 		</Modal>
   )
 }  

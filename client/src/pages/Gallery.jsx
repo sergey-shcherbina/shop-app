@@ -20,7 +20,7 @@ const Gallery = observer(() => {
           store.user.role !== "ADMIN" && setScreenVisible(true)
         }}
         // src={process.env.REACT_APP_API_URL + photo.img}
-        src={baseURL + photo.img}  
+        src={baseURL + "api/" + photo.img}  
         style={{cursor: "pointer",width: "70vw" ,height: "50vw"}}
       />
       Описание

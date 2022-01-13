@@ -23,7 +23,7 @@ const Home = observer(() => {
         >
         <Image
           // src={process.env.REACT_APP_API_URL + group.img}
-          src={baseURL + group.img}
+          src={baseURL + "api/" + group.img}
           style={{cursor: "pointer", width: "65vw", border: "solid white"}}
           onClick={() => {
             store.setSelectedGroup(group)

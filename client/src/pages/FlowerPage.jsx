@@ -28,7 +28,7 @@ const FlowerPage = observer(() => {
       <Image   
         onClick={() => store.setSelectedImage(image)}
         // src={process.env.REACT_APP_API_URL + image.img} 
-        src={baseURL + image.img} 
+        src={baseURL + "api/" + image.img} 
         style={{cursor: "pointer", marginLeft: 3, width: "13vw", height: "8vw"}}
       />
     </div>  
@@ -52,7 +52,7 @@ const FlowerPage = observer(() => {
         style={{cursor: "pointer"}}
       >
         {/* <Image src={process.env.REACT_APP_API_URL + (store.selectedImage.img || */}
-          <Image src={baseURL + (store.selectedImage.img ||
+          <Image src={baseURL + "api/" + (store.selectedImage.img ||
           "1" + store.selectedFlower.id + ".jpg")} 
           style={{width: "60vw", height: "32vw"}}
           onClick={() => setScreenVisible(true)}
