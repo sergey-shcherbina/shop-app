@@ -1,5 +1,7 @@
 import React from "react"
 import {Modal, Image, CloseButton} from "react-bootstrap"
+import {baseURL} from "../../http"
+
 
 const FullScreen = ({show, onHide, im}) => {
 	return (
@@ -11,7 +13,7 @@ const FullScreen = ({show, onHide, im}) => {
       >
         <CloseButton variant="white"></CloseButton>
       </div>
-      <Image src={process.env.REACT_APP_API_URL + im} style={{width: "100vw"}} />
+      <Image src={baseURL + im} style={{width: "100vw"}} />
 		</Modal>
   )
 }  
