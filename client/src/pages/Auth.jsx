@@ -26,16 +26,16 @@ const Auth = observer(() => {
 			}
 			navigate("/")
 		 } catch (err) {
-		 	alert(err.response.data.message)
+		 	// alert(err.response.data.message)
 		}
 	}
 
 	return (
-		<Container className="d-flex justify-content-center align-items-center">
-			<Card style={{width: 600, border: "none", marginTop: "10vh"}} className="p-3">
+		<Container className="d-flex justify-content-center align-items-center" style={{background: "transparent", height: "80vh"}}>
+			<Card style={{width: 600, border: "none"}} className="p-3">
 				<h1 className="m-auto">{isLogin ? "Авторизация" : "Регистрация"}</h1>
 				<Form className="d-flex flex-column mt-3">
-    {!isLogin &&
+    			{!isLogin &&
 						<Form.Control
 							className="mt-3"
 							style={{border: "none", borderBottom: "1px solid"}}

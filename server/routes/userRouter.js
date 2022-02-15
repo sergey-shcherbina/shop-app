@@ -29,7 +29,7 @@ router.post("/registration", async (req, res) => {
   } else {
     user = await User.create({name, email, password: hashPassword})  
   }
-  const basket = await Basket.create({userId: user.id})
+  // const basket = await Basket.create({userId: user.id})
 	const token = generateJwt(user.id, user.email, user.role)
 
 		// const token = jwt.sign(
@@ -53,7 +53,8 @@ router.post("/login", async (req, res) => {
   }
   const token = generateJwt(user.id, user.email, user.role)
   return res.json({token})
-}) 
+})
+
 
 //authMiddleware, userController.check                 
 router.get("/auth", 
@@ -80,8 +81,13 @@ router.get("/auth",
 ) 
 
 router.get("/", async (req, res) => {
-  const users = await User.findAll()
-  return res.json(users)
+  let {email} = req.query
+  // let user 
+  // if (email) {
+  const user = await User.findOne({where: {email}})
+  // }
+  // users = await User.findAll()
+  return res.json(user)
 })
 
 //checkRoleMiddleware

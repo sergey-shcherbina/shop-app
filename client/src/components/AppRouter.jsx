@@ -3,6 +3,7 @@ import {Routes, Route} from "react-router-dom"
 import Admin from "../pages/Admin"
 import Basket from "../pages/Basket"
 import Home from "../pages/Home"
+import Main from "../pages/Main"
 import Auth from "../pages/Auth"
 import FlowerPage from "../pages/FlowerPage"
 import GroupPage from "../pages/GroupPage"
@@ -12,7 +13,6 @@ import {observer} from "mobx-react-lite"
 
 const AppRouter = observer(() => {
   const {store} = useContext(Context)
-  console.log(store.user.role)
   
   return (
     <Routes>
@@ -25,17 +25,18 @@ const AppRouter = observer(() => {
     {store.user.role === "ADMIN" && 
       <Route path="/admin" element={<Admin />} />
     }
-    {(store.user.role === "ADMIN" || store.user.role === "USER") && 
+    {/* {(store.user.role === "ADMIN" || store.user.role === "USER") && 
       <Route path="/basket" element={<Basket />} />
-    }
-    <Route path="/" element={<Home />} />
+    } */}
+    <Route path="/" element={<Main />} />
+    <Route path="/home" element={<Home />} />
     <Route path="/registration" element={<Auth />} />
     <Route path="/login" element={<Auth />} />
     <Route path="/group_page" element={<GroupPage />} />
     <Route path="/flower" element={<FlowerPage />} />
     <Route path="/gallery" element={<Gallery />} />
-
-    <Route path="*" element={<Home />} />
+    <Route path="/basket" element={<Basket />} />
+    <Route path="*" element={<Main />} />
   </Routes>
   )
 })

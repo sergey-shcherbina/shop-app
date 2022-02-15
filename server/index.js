@@ -15,12 +15,15 @@ app.use(fileUpload({}))
 
 app.use("/api/user", require("./routes/userRouter"))
 app.use("/api/group", require("./routes/groupRouter"))
+app.use("/api/sub_group", require("./routes/subGroupRouter"))
 app.use("/api/flower", require("./routes/flowerRouter"))
 app.use("/api/review", require("./routes/reviewRouter"))
 app.use("/api/basket_flower", require("./routes/basketFlowerRouter"))
+app.use("/api/basket", require("./routes/basketRouter"))
 app.use("/api/image", require("./routes/imgageRouter"))
 app.use("/api/photo", require("./routes/photoRouter"))
 app.use("/api/rating", require("./routes/ratingRouter"))
+app.use("/api/buyer", require("./routes/buyerRouter"))
 
 const start = async () => {
   try {

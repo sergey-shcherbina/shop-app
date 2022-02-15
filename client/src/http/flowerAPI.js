@@ -12,6 +12,18 @@ export const removeGroup = async (id) => {
   const {data} = await $authHost.delete("api/group/" + id)
   return data 
 }
+export const createSubGroup = async (subGroup) => {
+  const {data} = await $authHost.post("api/sub_group", subGroup)
+  return data
+}
+export const fetchSubGroups = async (groupId) => {
+  const {data} = await $host.get("api/sub_group", {params: {groupId}})
+  return data
+}
+export const removeSubGroup = async (id) => {
+  const {data} = await $authHost.delete("api/sub_group/" + id)
+  return data 
+}
 export const createFlower = async (flower) => {
   const {data} = await $authHost.post("api/flower", flower)
   return data
@@ -20,12 +32,16 @@ export const editFlower = async (id, flower) => {
   const {data} = await $authHost.put("api/flower/" + id, flower)
   return data
 }
-export const fetchFlowers = async (groupId) => {
-  const {data} = await $host.get("api/flower", {params: {groupId}})
+export const fetchFlowers = async (subGroupId) => {
+  const {data} = await $host.get("api/flower", {params: {subGroupId}})
+  return data
+}
+export const fetchFlower = async (id) => {
+  const {data} = await $host.get("api/flower/" + id)
   return data
 }
 export const removeFlower = async (id) => {
-  const {data} = await $authHost.delete("api/flower" + id)
+  const {data} = await $authHost.delete("api/flower/" + id)
   return data 
 }
 export const createImage = async (image) => {
@@ -37,7 +53,7 @@ export const fetchImages = async (flowerId, order) => {
   return data
 }
 export const removeImage = async (id) => {
-  const {data} = await $authHost.delete("api/image" + id)
+  const {data} = await $authHost.delete("api/image/" + id)
   return data 
 }
 export const createPhoto = async (photo) => {
@@ -49,6 +65,8 @@ export const fetchPhotos = async (order) => {
   return data
 }
 export const removePhoto = async (id) => {
-  const {data} = await $authHost.delete("api/photo" + id)
+  const {data} = await $authHost.delete("api/photo/" + id)
   return data 
 }
+
+

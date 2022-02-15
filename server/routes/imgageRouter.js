@@ -34,6 +34,7 @@ router.delete("/:id", async (req, res) => {
   if (fs.existsSync(path.resolve(__dirname, "..", "static", image.img))) {
     fs.unlinkSync(path.resolve(__dirname, "..", "static", image.img))
   }
+  // fs.unlinkSync(path.resolve(__dirname, "..", "static", image.img))
   await Image.destroy({where: {id}})
   return res.json({})
 })

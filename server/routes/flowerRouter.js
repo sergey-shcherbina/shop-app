@@ -4,15 +4,15 @@ const {Flower} = require ("../models")
 const checkRole = require("./checkRole")
 
 router.post("/", async (req, res) => {
-	const {name, price, text, groupId} = req.body
-	const flower = await Flower.create({name, price, text, groupId})
+	const {name, price, text, subGroupId} = req.body
+	const flower = await Flower.create({name, price, text, subGroupId})
 	return res.json(flower)
 })
 router.get("/", async (req, res) => {
-  let {groupId} = req.query
+  let {subGroupId} = req.query
   let flowers
-  if (groupId) {
-    flowers = await Flower.findAll({where:{groupId}})
+  if (subGroupId) {
+    flowers = await Flower.findAll({where: {subGroupId}})
   } else {
     flowers = await Flower.findAll()
   }
@@ -25,9 +25,9 @@ router.get("/:id", async (req, res) => {
 })
 router.put("/:id", async (req, res) => {
 	const {id} = req.params
-	const {name, price, text, groupId} = req.body
+	const {name, price, text, subGroupId} = req.body
 	const flower = await Flower.findOne({where: {id}})
-	await flower.update({name, price, text, groupId})
+	await flower.update({name, price, text, subGroupId})
 	return res.json(flower)
 })
 router.delete("/:id", async (req, res) => {

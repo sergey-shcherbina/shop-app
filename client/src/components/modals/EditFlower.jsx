@@ -4,11 +4,13 @@ import {Context} from "../.."
 import CreateGroup from "./CreateGroup"
 import {observer} from "mobx-react-lite"
 import {editFlower, removeFlower, fetchFlowers} from "../../http/flowerAPI"
+import CreateSubGroup from "./CreateSubGroup"
 
 const EditFlower = observer(({show, onHide}) => {
 	const {store} = useContext(Context)
   const [price, setPrice] = useState("100")
 	const [groupVisible, setGroupVisible] = useState(false)
+	const [subGroupVisible, setSubGroupVisible] = useState(false)
 
 	const addChanges = () => {
 		editFlower(store.selectedFlower.id, {name: store.selectedFlower.name, text: store.selectedFlower.text, 
@@ -59,6 +61,24 @@ const EditFlower = observer(({show, onHide}) => {
 									)}
 								</Dropdown.Menu>
 							</Dropdown>
+							<Dropdown drop="end">
+								<Dropdown.Toggle 
+									variant="outline-dark" 
+									style={{border: "none"}}
+								>
+									{store.selectedSubGroup.name || "Изменить подгруппу"} 
+								</Dropdown.Toggle>
+								<Dropdown.Menu>
+									{store.subGroups.map(subGroup =>
+										<Dropdown.Item 
+											key={subGroup.id}	
+											onClick={() => store.setSelectedSubGroup(subGroup)}
+										>
+											{subGroup.name}
+										</Dropdown.Item> 
+									)}
+								</Dropdown.Menu>
+							</Dropdown>
 							<Button
 								variant="outline-dark" 
 								style={{border:"none"}}
@@ -66,10 +86,17 @@ const EditFlower = observer(({show, onHide}) => {
 							>
 								Добавить группу
 							</Button>
+							<Button
+								variant="outline-dark" c
+								style={{border:"none"}}
+								onClick={() => setSubGroupVisible(true)}
+							>
+								Добавить подгруппу
+							</Button>
               <div className="d-flex justify-content-between align-items-center" style={{width: "18vw"}}>
-                Стоимость:
+                Цена:
                 <Form.Control
-                	style={{width: "10vw"}}
+                	style={{width: "5wv"}}
                 	type="number"
                   value={price}
                   onChange={event => setPrice(event.target.value)}
@@ -90,6 +117,7 @@ const EditFlower = observer(({show, onHide}) => {
 				</Modal.Footer>
 			</Modal>
 			<CreateGroup show={groupVisible} onHide={() => setGroupVisible(false)} />
+			<CreateSubGroup show={subGroupVisible} onHide={() => setSubGroupVisible(false)} />
 		</Container>
   )
 })  

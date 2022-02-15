@@ -25,7 +25,10 @@ router.get("/:id", async (req, res) => {
 router.delete("/:id", async (req, res) => {
 	const {id} = req.params
   const photo = await Photo.findOne({where: {id}})
-  fs.unlinkSync(path.resolve(__dirname, "..", "static", photo.img))
+  if (fs.existsSync(path.resolve(__dirname, "..", "static", photo.img))) {
+    fs.unlinkSync(path.resolve(__dirname, "..", "static", photo.img))
+  }
+  // fs.unlinkSync(path.resolve(__dirname, "..", "static", photo.img))
   await Photo.destroy({where: {id}})
   return res.json({})
 })

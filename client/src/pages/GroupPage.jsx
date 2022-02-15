@@ -1,50 +1,61 @@
 import React,  {useContext, useEffect} from "react"
 import {observer} from "mobx-react-lite"
 import {Context} from ".."
-import {ListGroup, Image, Container} from "react-bootstrap"
+import {Image, Container, Col, Row} from "react-bootstrap"
 import {useNavigate} from "react-router-dom"
-import {fetchFlowers} from "../http/flowerAPI"
+import {fetchFlowers, fetchImages, fetchSubGroups} from "../http/flowerAPI"
 import {baseURL} from "../http"
+import FlowerBar from "../components/FlowerBar"
 
 const GroupPage = observer(() => {
   const {store} = useContext(Context)
-  useEffect(() => {
-    fetchFlowers().then(data => store.setFlowers(data))
-    .then(() => store.setSelectedImage({}))
-  }, [])
-
   const navigate = useNavigate()
-  console.log(store.selectedGroup.name)
+  useEffect(() => {
+     // fetchSubGroups(store.selectedGroup.id).then(data => store.setSubGroups(data))
+    fetchFlowers(store.selectedSubGroup.id).then(data => store.setFlowers(data))
+    // .then(() => store.setSelectedImage({}))
+    fetchImages().then(data => store.setImages(data))
+  }, [])
+                                                  
   return (
-    <div className="d-flex flex-column align-items-center mt-3">
+    <div className="d-flex flex-column align-items-center mt-3" style={{minHeight: "80vh"}}>
       <h3 style={{color: "white"}}>
-        {store.selectedGroup.name}
+        {store.selectedSubGroup.name}
       </h3>
-    <Container 
-      className="d-flex flex-column align-items-center" 
-      style={{width: "70vw" ,height: "78vh", overflow: "auto"}}
-    >
-      <ListGroup>
-        {store.flowers.filter(flowFilt => 
-          flowFilt.groupId === store.selectedGroup.id).map(flower =>  
-            <ListGroup.Item  
-              key={flower.id}
-              style={{cursor: "pointer", marginTop: 2}}
-              onClick={() => {
-              // fetchImages().then(data => store.setImages(data))
-                store.setSelectedFlower(flower)
-                navigate("/flower")
-              }}
-            >
-              <h5>{flower.name}</h5>
-              {/* <Image src={process.env.REACT_APP_API_URL + "1" + flower.id + ".jpg"} style={{width: "60vw", height: "38.5vw"}}/> */}
-              <Image src={baseURL + "api/" + "1" + flower.id + ".jpg"} style={{width: "60vw", height: "38.5vw"}}/>
-            </ListGroup.Item > 
-          )}
-        </ListGroup>
+      <Container>
+        <Row className="mt-2">
+          <Col md={2} className="mt-10">
+            {store.selectedSubGroup.id && <FlowerBar />}  
+          </Col>
+          <Col md={10}>
+            <Row className="d-flex">
+                {store.flowers.filter(flowFilt => flowFilt.subGroupId === store.selectedSubGroup.id).map(flower => 
+                  <Col md={4} key={flower.id} className="mb-4 d-flex flex-column align-items-center">
+                    <Image
+                      width={330} height={220} src={baseURL + "api/" + "1" + flower.id + ".jpg"}
+                      style={{cursor: "pointer", border: "solid white"}}
+                      onClick={() => {
+                        store.setSelectedFlower(flower)
+                        navigate("/flower")
+                      }}
+                    />
+                    <h5 style={{color: "white", marginTop: -60}}>{flower.name.slice(0, flower.name.indexOf("("))}</h5>
+                    <h5 style={{color: "white"}}>{flower.name.slice(flower.name.indexOf("("))}</h5>
+                    {/* <div className="text-black mt-1 d-flex justify-content-between align-items-center">
+                      <div>...</div>
+                      <div className="d-flex align-items-center">
+                        <div>...</div>
+                           <Image width={18} height={18} src={star}/> 
+                        </div>
+                      </div>
+                    <div className="d-flex justify-content-center">{flower.name}</div> */}
+                </Col>
+              )}
+            </Row>
+          </Col>
+        </Row>
       </Container>
     </div>
   )
 })
-
 export default GroupPage
