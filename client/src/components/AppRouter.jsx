@@ -25,9 +25,6 @@ const AppRouter = observer(() => {
     {store.user.role === "ADMIN" && 
       <Route path="/admin" element={<Admin />} />
     }
-    {/* {(store.user.role === "ADMIN" || store.user.role === "USER") && 
-      <Route path="/basket" element={<Basket />} />
-    } */}
     <Route path="/" element={<Main />} />
     <Route path="/home" element={<Home />} />
     <Route path="/registration" element={<Auth />} />

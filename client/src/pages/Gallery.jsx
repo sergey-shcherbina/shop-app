@@ -19,8 +19,7 @@ const Gallery = observer(() => {
           store.setSelectedPhoto(photo)
           store.user.role !== "ADMIN" && setScreenVisible(true)
         }}
-        src={baseURL + "api/" + photo.img}
-        // src={baseURL + "api/" + (photo.img === "1000.jpg" ? "2000jpg" : photo.img)}  
+        src={baseURL + "api/" + photo.img}  
         style={{cursor: "pointer",width: "70vw" ,height: "50vw"}}
       />
       Описание

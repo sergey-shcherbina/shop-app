@@ -1,5 +1,5 @@
 import React, {useState, useContext} from "react"
-import {Button, Image, Form, Tabs, Tab, Row, Col, CloseButton, FormGroup} from "react-bootstrap"
+import {Button, Image, Form, Tabs, Tab, Row, Col} from "react-bootstrap"
 import {baseURL} from "../http"
 import arrow from "../assets/arrow.png"
 import np from "../assets/nova_poshta.png"
@@ -127,7 +127,6 @@ const Basket = observer(() => {
                   </div>
                 </Button>
                 <Button 
-                  // type="submit"
                   variant="outline-primary" size="lg" 
                   onClick={() => {
                     createBasket({buyerId: store.buyer.id})

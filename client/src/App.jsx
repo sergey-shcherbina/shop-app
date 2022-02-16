@@ -8,11 +8,8 @@ import {observer} from "mobx-react-lite"
 
 const App = observer(() => {
   const {store} = useContext(Context)
-  console.log(store.backgr.img)
-  // (store.backgr.img ||
   return (
     <div 
-      // style={{background:`url(${process.env.REACT_APP_API_URL + (store.backgr.img || "1000.jpg")}) no-repeat`,
       style={{background:`url(${baseURL + "api/" + (store.backgr.img || "1000.jpg")})no-repeat`, 
       backgroundSize: "cover"}}
     >
