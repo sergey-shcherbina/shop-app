@@ -6,9 +6,11 @@ import {Context} from ".."
 import {observer} from "mobx-react-lite"
 import {fetchBaskets, fetchBasketFlowers, fetchBuyerId, editBasket} from "../http/userAPI"
 import InputMask from "react-input-mask"
+import {useNavigate} from "react-router-dom"
 
 const Admin = observer(() => {
   const {store} = useContext(Context)
+  const navigate = useNavigate()
   const [flowerVisible, setFlowerVisible] = useState(false)
   const [photoVisible, setPhotoVisible] = useState(false)
   const [inpVis, setInpVis] = useState(false)
