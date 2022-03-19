@@ -8,9 +8,10 @@ import {observer} from "mobx-react-lite"
 
 const App = observer(() => {
   const {store} = useContext(Context)
+  // (store.backgr.img || "1000.jpg") baseURL
   return (
     <div 
-      style={{background:`url(${baseURL + "api/" + (store.backgr.img || "1000.jpg")})no-repeat`, 
+      style={{background:`url(${"http://localhost:3001/1000.jpg"})no-repeat`, 
       backgroundSize: "cover"}}
     >
       <BrowserRouter>

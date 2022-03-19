@@ -10,7 +10,7 @@ router.post("/", async (req, res) => {
   const {img} = req.files
 	let fileName = order + "000.jpg"
   img.mv(path.resolve(__dirname, "..", "static", fileName))
-	const photo = await Photo.create({order, img: fileName})
+	const photo = await Photo.create({img: fileName})
   return res.json(photo)
 })
 router.get("/", async (req, res) => {

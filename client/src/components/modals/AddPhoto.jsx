@@ -7,14 +7,16 @@ import {observer} from "mobx-react-lite"
 const AddPhoto = observer(({show, onHide}) => {
   const {store} = useContext(Context)
 	const [file, setFile] = useState(null)
-  const [order, setOrder] = useState("0") 
+  const [order, setOrder] = useState("") 
 	const addPhoto = () => {
     const formData = new FormData()
-    formData.append("userId", store.user.id)
+    // formData.append("userId", store.user.id)
     formData.append("order", order)
     formData.append("img", file)
-    createPhoto(formData).then(() => {
-		  fetchPhotos().then(data => store.setPhotos(data))
+    createPhoto(formData).then(data => { 
+      store.setPhotos(data)
+    // .then(() => {fetchPhotos().then(data => store.setPhotos(data))
+      console.log(store.photos)
 			onHide()
     })}	
 	return (
@@ -27,9 +29,10 @@ const AddPhoto = observer(({show, onHide}) => {
       		<Modal.Body>
         	<Form>
             <Form.Control
+              // value={order}
               placeholder="Укажите номер фотографии"
               type="number"
-              onChange={event => setOrder(event.target.value)}
+              onChange={event => setOrder(Number(event.target.value))}
             />
             <Form.Control
               className="mt-3"
