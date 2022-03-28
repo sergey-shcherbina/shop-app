@@ -26,7 +26,7 @@ const Home = observer(() => {
               {store.subGroups.map(subGroup =>
                 <Col md={6} key={subGroup.id} className="mb-5 d-flex flex-column align-items-center" >
                   <Image
-                    src={baseURL + "api/" + subGroup.img}
+                    src={baseURL + subGroup.img}
                     style={{cursor: "pointer", width: 450, height: 300, border: "solid white"}}
                     onClick={() => {
                       store.setSelectedSubGroup(subGroup)

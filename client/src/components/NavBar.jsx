@@ -131,7 +131,7 @@ const NavBar = observer(() => {
                 setButtonsVisible(false)
               }}
             >
-              <Image src={baseURL + "api/" + store.selectedGroup.img} width={75} height={50} style={{border: "1px solid white"}}/>
+              <Image src={baseURL + store.selectedGroup.img} width={75} height={50} style={{border: "1px solid white"}}/>
               {store.subGroups.map(subGroup => 
                 <Button 
                   key={subGroup.id}

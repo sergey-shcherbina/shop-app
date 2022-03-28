@@ -25,14 +25,14 @@ router.get("/", async (req, res) => {
 })
 router.get("/:id", async (req, res) => {
 	const {id} = req.params
-	const subGroup = await Flower.findOne({where: {id}}) 
+	const subGroup = await SubGroup.findOne({where: {id}}) 
 	return res.json(subGroup)
 })
 
 router.delete("/:id", async (req, res) => {
 	const {id} = req.params
   const subGroup = await SubGroup.findOne({where: {id}})
-  fs.unlinkSync(path.resolve(__dirname, "..", "static", group.img))
+  fs.unlinkSync(path.resolve(__dirname, "..", "static", subGroup.img))
 	await SubGroup.destroy({where: {id}})
   return res.json({})
 })

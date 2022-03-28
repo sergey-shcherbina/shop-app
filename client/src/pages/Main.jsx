@@ -13,7 +13,7 @@ const Main = () => {
             className="d-block w-100" 
             // width={1000}
             // height={700}
-            src={baseURL + "api/" + "4000.jpg"}
+            src={baseURL + "4000.jpg"}
           />
           <Carousel.Caption>
           <div style={{marginTop: "-50vh"}}>
@@ -27,7 +27,8 @@ const Main = () => {
             className="d-block w-100"
               // height={700}
               // width={1000}
-            src={baseURL + "api/" + "2000.jpg"}
+            // src={baseURL + "api/" + "2000.jpg"}
+            src={baseURL + "2000.jpg"}
           />
           <Carousel.Caption>
             <div style={{marginTop: "-50vh"}}>
@@ -41,7 +42,7 @@ const Main = () => {
             className="d-block w-100"
               // height={700}
               // width={1000}
-            src={baseURL + "api/" + "3000.jpg"}
+            src={baseURL + "3000.jpg"}
             />
           <Carousel.Caption>
             <div style={{marginTop: "-50vh"}}>
@@ -55,7 +56,7 @@ const Main = () => {
             className="d-block w-100"
               // height={700}
               // width={1000}
-            src={baseURL + "api/" + "1000.jpg"}
+            src={baseURL + "5000.jpg"}
             />
           <Carousel.Caption>
             <div style={{marginTop: "-50vh"}}>
